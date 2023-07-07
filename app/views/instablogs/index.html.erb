@@ -1,0 +1,26 @@
+<% if notice.present? %>
+  <div class="container col-md-10 col-12 mt-4" style="position: relative; z-index: 9999;">
+    <div class="alert alert-primary" role="alert">
+      <p class="text-center m-0" style="color: green"><%= notice %></p>
+    </div>
+  </div>
+  <script>
+    setTimeout(function() {
+      $('.alert').fadeOut();
+    }, 6000);
+  </script>
+<% end %>
+
+
+<div class="container col-md-8 col-12 mt-4">
+  <h1 class="text-center mb-3 fw-bold">Instablogs</h1>
+  <% if current_user.admin? %>
+    <%= link_to "Nuevo Instablog", new_instablog_path, class: "btn btn-success w-100 text-center", style: "position: relative; z-index: 9999;" %>
+  <% end %>
+
+  <div id="instablogs">
+    <% @instablogs.each do |instablog| %>
+      <%= render instablog %>
+    <% end %>
+  </div>
+</div>

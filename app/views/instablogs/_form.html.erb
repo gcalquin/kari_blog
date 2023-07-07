@@ -1,0 +1,27 @@
+<%= form_with(model: instablog, class: "needs-validation", novalidate: true, url: instablogs_path) do |form| %>
+  <% if instablog.errors.any? %>
+    <div class="text-danger">
+      <h2><%= pluralize(instablog.errors.count, "error") %> prohibited this instablog from being saved:</h2>
+
+      <ul>
+        <% instablog.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= form.label :image, class: "form-label", style: "display: block" %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+  
+  <div class="form-group mb-3">
+    <%= form.label :body, class: "form-label", style: "display: block" %>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
